@@ -3,6 +3,9 @@ Cloudflare is used to front my website by providing CDN, WAF and DDoS protection
 
 This directory contains the Terraform IaC to define the Cloudflare configuration.
 
+![Untitled-1](https://github.com/user-attachments/assets/722108c3-c5d1-4842-a72a-2afdf4fe1626)
+
+
 ## Configuration
 ### Cloudflare
 The Cloudflare API key is used to authenticate into my account. Local environmental variable is used:
