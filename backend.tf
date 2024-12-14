@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "lexd-solutions-tfstate"
+    bucket = "cloudflare-solutions-tfstate"
     key    = "terraform/cloudflare.tfstate"
     region = "ap-southeast-2"
   }
