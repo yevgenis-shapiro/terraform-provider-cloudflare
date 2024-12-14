@@ -10,8 +10,8 @@ This directory contains the Terraform IaC to define the Cloudflare configuration
 ### Cloudflare
 The Cloudflare API key is used to authenticate into my account. Local environmental variable is used:
 ```
-echo 'export CLOUDFLARE_API_KEY="123"' >> ~/.bashrc.alex
-echo 'export CLOUDFLARE_EMAIL="myemail@domain.com"' >> ~/.bashrc.alex
+echo 'export CLOUDFLARE_API_KEY="123"' >> ~/.bashrc
+echo 'export CLOUDFLARE_EMAIL="myemail@domain.com"' >> ~/.bashrc
 ```
 
 ### Terraform Backend
@@ -21,10 +21,7 @@ Note: When I first played with this Cloudflare provider, I was using a local sta
 
 ```shell
 # First auth into AWS
-# See: https://github.com/88lexd/lexd-solutions/tree/main/misc-scripts/python-aws-assume-role)
-$ assume-role --c cred.yml -r roles.yml
-
-$ export AWS_PROFILE=lexd-admin
+$ export AWS_PROFILE=yevgeni
 
 # Migrate state over to S3
 $ terraform init -migrate-state
@@ -57,7 +54,7 @@ Due to the lag in DNS replication on the internet, to test the Cloudflare protec
 
 First get the IP by quering CloudFlare Name Server
 ```
-alex@LEXD-PC:~$ nslookup
+PC:~$ nslookup
 > server bob.ns.cloudflare.com  <------- Set to query Cloudflare
 Default server: bob.ns.cloudflare.com
 Address: 173.245.59.104#53
@@ -71,24 +68,9 @@ Default server: bob.ns.cloudflare.com
 Address: 2803:f800:50::6ca2:c168#53
 Default server: bob.ns.cloudflare.com
 Address: 2a06:98c1:50::ac40:2168#53
-> lexdsolutions.com  <------- query my record
 Server:         bob.ns.cloudflare.com
 Address:        173.245.59.104#53
 
-Name:   lexdsolutions.com
-Address: 104.21.51.90  <------- Take note of this record (can be any from this response)
-Name:   lexdsolutions.com
-Address: 172.67.177.252
-Name:   lexdsolutions.com
-Address: 2606:4700:3034::ac43:b1fc
-Name:   lexdsolutions.com
-Address: 2606:4700:3037::6815:335a
-```
-
-Modify local `hostfile` with the following records for testing:
-```
-104.21.51.90 lexdsolutions.com
-104.21.51.90 www.lexdsolutions.com
 ```
 
 ## Cloudflare Tunnel
