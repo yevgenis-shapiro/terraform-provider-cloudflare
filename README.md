@@ -3,13 +3,11 @@
 ![with-terraform-_3x-2](https://github.com/user-attachments/assets/20fa14ec-1690-4656-8ceb-adcea4a69fb3)
 
 
-# Cloudflare
+### Cloudflare
 Cloudflare is used to front my website by providing CDN, WAF and DDoS protection.
 
-This directory contains the Terraform IaC to define the Cloudflare configuration.
 
-## Configuration
-### Cloudflare
+### Configuration
 The Cloudflare API key is used to authenticate into my account. Local environmental variable is used:
 ```
 echo 'export CLOUDFLARE_API_KEY="123"' >> ~/.bashrc
@@ -66,10 +64,3 @@ Default server: bob.ns.cloudflare.com
 Address: 108.162.193.104#53
 
 ```
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_tunnel_secret_value"></a> [tunnel\_secret\_value](#output\_tunnel\_secret\_value) | n/a |
-<!-- END_TF_DOCS -->
