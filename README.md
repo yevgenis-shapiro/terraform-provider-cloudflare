@@ -1,10 +1,12 @@
+
+
+![with-terraform-_3x-2](https://github.com/user-attachments/assets/20fa14ec-1690-4656-8ceb-adcea4a69fb3)
+
+
 # Cloudflare
 Cloudflare is used to front my website by providing CDN, WAF and DDoS protection.
 
 This directory contains the Terraform IaC to define the Cloudflare configuration.
-
-![with-terraform-_3x-2](https://github.com/user-attachments/assets/20fa14ec-1690-4656-8ceb-adcea4a69fb3)
-
 
 ## Configuration
 ### Cloudflare
@@ -62,72 +64,8 @@ Default server: bob.ns.cloudflare.com
 Address: 172.64.33.104#53
 Default server: bob.ns.cloudflare.com
 Address: 108.162.193.104#53
-Default server: bob.ns.cloudflare.com
-Address: 2606:4700:58::adf5:3b68#53
-Default server: bob.ns.cloudflare.com
-Address: 2803:f800:50::6ca2:c168#53
-Default server: bob.ns.cloudflare.com
-Address: 2a06:98c1:50::ac40:2168#53
-Server:         bob.ns.cloudflare.com
-Address:        173.245.59.104#53
 
 ```
-
-## Cloudflare Tunnel
-Background: Cloudflare tunnel allows me to selfhost my blog and not on AWS. Due to CGNAT limitation, I do not have a dedicated public IP available to use.
-
-Terraform is used to setup the tunnel and once it is setup:
- - Manually log onto Cloudflare dashboard
- - Look for the tunnel
- - Inside the configuration, it provides the command to run `cloudflared` as a container, for example:
-    ```
-    $ docker run -d --restart unless-stopped cloudflare/cloudflared:latest tunnel --no-autoupdate run --token abc123
-    ```
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4.25.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | 3.6.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4.25.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.6.0 |
-
-## Modules
-
-No modules.
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [cloudflare_notification_policy.tunnel_health](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/notification_policy) | resource |
-| [cloudflare_record.lexd_solutions](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
-| [cloudflare_ruleset.cache](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) | resource |
-| [cloudflare_ruleset.waf](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) | resource |
-| [cloudflare_ruleset.www](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) | resource |
-| [cloudflare_tiered_cache.tier](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tiered_cache) | resource |
-| [cloudflare_tunnel.lexd_solutions](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel) | resource |
-| [cloudflare_tunnel_config.lexd_solutions](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel_config) | resource |
-| [cloudflare_zone.lexdsolutions](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) | resource |
-| [cloudflare_zone_settings_override.lexdsolutions](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_settings_override) | resource |
-| [random_string.tunnel_secret](https://registry.terraform.io/providers/hashicorp/random/3.6.0/docs/resources/string) | resource |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | The account id for Cloudflare | `string` | n/a | yes |
-| <a name="input_email"></a> [email](#input\_email) | The email to send notifications | `string` | n/a | yes |
-| <a name="input_hostname_dns_record"></a> [hostname\_dns\_record](#input\_hostname\_dns\_record) | The hostname used for creating the DNS record | `string` | n/a | yes |
-| <a name="input_hostname_fqdn"></a> [hostname\_fqdn](#input\_hostname\_fqdn) | The FQDN used for the Tunnel | `string` | n/a | yes |
-| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | The DNS zone id for Cloudflare | `string` | n/a | yes |
 
 ## Outputs
 
